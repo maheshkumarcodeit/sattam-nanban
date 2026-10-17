@@ -74,7 +74,8 @@ I tested with 10 Tamil questions, including one deliberate trap (GST, which has 
 | 3 | Prompt: no greeting, Tamil script only, list the sources used | 6 clear passes, 0 fails, 2 partial, 2 conflicts hidden |
 | 4 | Prompt: say what is missing when the answer is only partial | 6 clear passes, 2 honest partials, 2 conflicts hidden, 0 fails |
 | 5 | FAQ added to the index, plain top-5 retrieval | **Worse:** 2 clear passes, 1 partial, 3 conflicts hidden, **4 wrong "not in the documents"** answers |
-| 6 | Balanced retrieval (FAQ and other pages searched separately) | Built and tested on a stand-in index. **Results of a full 10-question run not yet reviewed** |
+| 6 | Balanced retrieval (3 FAQ chunks plus 4 from other pages, searched separately) | 7 clear passes, 1 partial, 1 fail (Q7), 1 pass with minor English words. Conflict questions (age, income, subsidy) now name both figures and their sources |
+| 7 | Retrieval widened to 6 non-FAQ chunks | 5 clear passes, 4 partial, 0 fails. Q7 no longer wrongly says "not found"; Q1 and Q6 got slightly worse. Single runs vary, so the difference between rounds 6 and 7 is within noise |
 
 Caveats: hand-scored by the author, 10 questions only, the same questions were used for tuning, and each result is one sample. Treat these numbers as development notes, not proof of quality.
 
@@ -86,11 +87,12 @@ Caveats: hand-scored by the author, 10 questions only, the same questions were u
 4. **Honest "not found" held up.** The GST trap question was answered with "not found" in every round and in the web demo.
 5. **Old government PDFs can hide garbled Tamil.** A page can look perfect on screen while its text layer is unreadable by code.
 6. **Free-tier limits shape the product.** One model allowed only 20 requests per day, and failed attempts seemed to count toward the limit.
+7. **Tuning stopped on purpose.** After round 7 I stopped adjusting settings on the same 10 questions, because differences between rounds 6 and 7 were within run-to-run noise. The next step is a fresh set of unseen questions.
 
 ## Known limitations and roadmap
 
-- [ ] Review a full 10-question run with balanced retrieval and update the table above
-- [ ] Confirm the app names both figures when pages disagree
+- [x] Balanced retrieval reviewed (rounds 6 and 7)
+- [x] The app names both figures and their sources when pages disagree (Q2, Q3 confirmed; Q1 only partly)
 - [ ] Show each document's date next to its answers
 - [ ] Add a GST source document
 - [ ] A fresh set of unseen test questions
