@@ -89,6 +89,10 @@ Caveats: hand-scored by the author, 10 questions only, the same questions were u
 6. **Free-tier limits shape the product.** One model allowed only 20 requests per day, and failed attempts seemed to count toward the limit.
 7. **Tuning stopped on purpose.** After round 7 I stopped adjusting settings on the same 10 questions, because differences between rounds 6 and 7 were within run-to-run noise. The next step is a fresh set of unseen questions.
 
+## Product requirements
+
+The product requirements document (problem, users, goals, success metrics, risks, roadmap) is in [docs/PRD.md](docs/PRD.md). A Word version is in [docs/Sattam_Nanban_PRD_v0.2.docx](docs/Sattam_Nanban_PRD_v0.2.docx). User needs in it are assumptions; no real users have been interviewed yet.
+
 ## Known limitations and roadmap
 
 - [x] Balanced retrieval reviewed (rounds 6 and 7)
